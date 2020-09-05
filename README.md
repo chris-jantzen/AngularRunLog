@@ -13,3 +13,7 @@ When in development mode, navigate to `http://localhost:4201/graphql` to use the
 ### Authentication
 
 To use most of the graphql routes, an access token is required in the Authentication header value that can be acquired by creating a user and making a `GET` request to `http://localhost:4201/get-token` with a valid username and password from a created user. Note: Creating a user through the graphql playground does not require an access token.
+
+### Additional Info Needed For Development
+
+See [Server Readme](https://github.com/jantzeca/AngularRunLog/blob/master/server/README.md) for additional info required to start the server.
