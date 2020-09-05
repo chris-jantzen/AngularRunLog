@@ -1,27 +1,15 @@
 # Runlog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+Runlog is a run tracking application for saving all of the details of a run to track personal progress, wear on running shoes, and more.
 
-## Development server
+## Development Work
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run dev` to launch the app in development mode. Navigate to `http://localhost:4200`. The app will automatically reload as changes are made to the files. The server runs on `http://localhost:4201`.
 
-## Code scaffolding
+### Graphql
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+When in development mode, navigate to `http://localhost:4201/graphql` to use the graphql playground editor in the browser.
 
-## Build
+### Authentication
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To use most of the graphql routes, an access token is required in the Authentication header value that can be acquired by creating a user and making a `GET` request to `http://localhost:4201/get-token` with a valid username and password from a created user. Note: Creating a user through the graphql playground does not require an access token.
