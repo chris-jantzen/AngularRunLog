@@ -1,5 +1,5 @@
 <div class="signUpContainer">
-  <form [formGroup]="myForm" class="signUpForm">
+  <form (submit)="onSubmit()" [formGroup]="myForm" class="signUpForm">
     <h1>Join RunLog<br/>Today</h1>
     <div class="infoInputContainer">
       <div class="loginInputSection">
