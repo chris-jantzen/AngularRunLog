@@ -1,0 +1,16 @@
+<div class="signUpContainer">
+  <form [formGroup]="myForm" class="signUpForm">
+    <h1>Join RunLog<br/>Today</h1>
+    <div class="infoInputContainer">
+      <div class="loginInputSection">
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" name="email" id="email" placeholder="Email" />
+      </div>
+      <div class="loginInputSection">
+        <label for="password">Password</label>
+        <input formControlName="password" type="password" name="password" id="password" placeholder="Password" />
+      </div>
+    </div>
+    <input type="submit" value="Sign Up"/>
+  </form>
+</div>

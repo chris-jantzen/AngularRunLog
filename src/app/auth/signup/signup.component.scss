@@ -1,0 +1,103 @@
+$primary-color: #1985A1;
+$gray: #ccc;
+$medium-size: 900px;
+
+.signUpContainer {
+  width: 100%;
+  height: calc(100vh - 50px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-image: url("../../../assets/login.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .signUpForm {
+    height: 45%;
+    width: 20%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    color: #fff;
+    border-radius: 3px;
+
+    @media screen and (max-height: $medium-size) {
+      height: 55%;
+    }
+    
+    @media screen and (max-width: 1400px) {
+      width: 25%;
+    }
+
+    h1 {
+      text-align: center;
+      justify-self: center;
+      align-self: flex-end;
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin: 0;
+
+      @media screen and (max-height: $medium-size) {
+        font-size: 1.875rem;
+      }
+    }
+
+    .infoInputContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .loginInputSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 80%;
+        height: 50%;
+
+        label {
+          margin: 0 0 0.5rem 0;
+          font-size: 1.25rem;
+
+          @media screen and (max-height: $medium-size) {
+            font-size: 1rem;
+          }
+        }
+
+        input {
+          box-sizing: border-box;
+          background: #000;
+          color: #fff;
+          height: 2.5rem;
+          width: 100%;
+          border: 1px solid $gray;
+          border-radius: 3px;
+          padding-left: 0.5rem;
+          font-size: 14px;
+        }
+
+        ::placeholder {
+          font-size: 14px;
+        }
+      }
+
+      .loginInputSection:not(:first-of-type) {
+        justify-content: flex-start;
+      }
+    }
+    input[type=submit] {
+      width: 80%;
+      height: 2.5rem;
+      border: none;
+      border-radius: 3px;
+      font-size: 1.25rem;
+      color: #fff;
+      background: $primary-color;
+      justify-self: center;
+      cursor: pointer;
+    }
+  }
+}
