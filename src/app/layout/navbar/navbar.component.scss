@@ -20,11 +20,6 @@
     .logoLink {
       text-decoration: none;
       color: $black;
-
-      // Remove when logo added
-      h1 {
-        margin: 0;
-      }
     }
 
     ul {
@@ -39,7 +34,7 @@
       height: 1rem;
       padding-left: 0;
       text-align: center;
-      width: 33%;
+      width: 25%;
 
       .linkItem {
         text-decoration: none;
