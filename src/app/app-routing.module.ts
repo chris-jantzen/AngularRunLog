@@ -6,7 +6,7 @@ import { LoginComponent } from './auth/login/login.component';
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' }, // Home if authenticated, welcome if not. See how to handle this with the guard service
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Home if authenticated, welcome if not. See how to handle this with the guard service
   { path: 'welcome', component: WelcomeComponent }, // public
   { path: 'login', component: LoginComponent }, // public
   { path: 'signup', component: SignupComponent }, // public
