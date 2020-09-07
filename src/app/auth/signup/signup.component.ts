@@ -9,7 +9,7 @@ import { timer } from 'rxjs'; // TEMP
 })
 export class SignupComponent implements OnInit {
 
-  myForm: FormGroup;
+  signUpForm: FormGroup;
 
   // Form State After Submission
   loading = false;
@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.myForm = this.fb.group({
+    this.signUpForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
       ]]
     });
 
-    /* this.myForm.valueChanges.subscribe(
+    /* this.signUpForm.valueChanges.subscribe(
       e => {
         console.log(this.email);
         // this.email = e['email'];
@@ -38,17 +38,17 @@ export class SignupComponent implements OnInit {
 
   get email() {
     // can use this to get the status to see if it's valid, etc. to update styles or get the value.
-    return this.myForm.get('email');
+    return this.signUpForm.get('email');
   }
 
   get password() {
-    return this.myForm.get('password');
+    return this.signUpForm.get('password');
   }
 
   async onSubmit() {
     this.loading = true; // TODO: Some sort of loading animation. Three dots bouncing or something
 
-    const { email, password } = this.myForm.value;
+    const { email, password } = this.signUpForm.value;
 
     try {
       /* if after validation, it is successful, save the token somewhere (auth state probably?) and 
@@ -58,6 +58,7 @@ export class SignupComponent implements OnInit {
       timer(2000).subscribe(() => {
         console.log(email, password);
         this.success = true;
+        this.loading = false;
         console.log('successful');
       });
     } catch (err) {

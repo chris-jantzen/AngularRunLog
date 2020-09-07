@@ -1,7 +1,11 @@
-@import "../../util.scss";
+// @import "../../util.scss";
+$white: #fff;
+$black: #000;
+$gray: #ccc;
+$primary-color: #1985A1;
 $medium-height: 900px;
 
-.signUpContainer {
+.loginContainer {
   width: 100%;
   height: calc(100vh - 50px);
   overflow-x: hidden;
@@ -12,7 +16,7 @@ $medium-height: 900px;
   justify-content: center;
   align-items: center;
 
-  .signUpForm {
+  .loginForm {
     height: 45%;
     width: 20%;
     background-color: rgba(0, 0, 0, 0.8);
@@ -49,7 +53,7 @@ $medium-height: 900px;
       justify-content: center;
       align-items: center;
 
-      .signUpInputSection {
+      .loginInputSection {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -83,7 +87,7 @@ $medium-height: 900px;
         }
       }
 
-      .signUpInputSection:not(:first-of-type) {
+      .loginInputSection:not(:first-of-type) {
         justify-content: flex-start;
       }
     }

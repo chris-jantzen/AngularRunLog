@@ -1,16 +1,16 @@
-<div class="signUpContainer">
-  <form (submit)="onSubmit()" [formGroup]="signUpForm" class="signUpForm">
-    <h1>Join RunLog<br/>Today</h1>
+<div class="loginContainer">
+  <form (submit)="onSubmit()" [formGroup]="loginForm" class="loginForm">
+    <h1>Log In</h1>
     <div class="infoInputContainer">
-      <div class="signUpInputSection">
+      <div class="loginInputSection">
         <label for="email">Email</label>
         <input formControlName="email" type="email" name="email" id="email" placeholder="Email" />
       </div>
-      <div class="signUpInputSection">
+      <div class="loginInputSection">
         <label for="password">Password</label>
         <input formControlName="password" type="password" name="password" id="password" placeholder="Password" />
       </div>
     </div>
-    <input type="submit" value="Sign Up"/>
+    <input type="submit" value="Log In"/>
   </form>
 </div>
