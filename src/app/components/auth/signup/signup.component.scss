@@ -1,18 +1,18 @@
-@import "../../util.scss";
+@import "../../../util.scss";
 $medium-height: 900px;
 
-.loginContainer {
+.signUpContainer {
   width: 100%;
   height: calc(100vh - 50px);
   overflow-x: hidden;
   overflow-y: hidden;
-  background-image: url("../../../assets/login.jpg");
+  background-image: url("../../../../assets/login.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .loginForm {
+  .signUpForm {
     height: 45%;
     width: 20%;
     background-color: rgba(0, 0, 0, 0.8);
@@ -24,7 +24,7 @@ $medium-height: 900px;
     @media screen and (max-height: $medium-height) {
       height: 55%;
     }
-    
+
     @media screen and (max-width: 1400px) {
       width: 25%;
     }
@@ -49,7 +49,7 @@ $medium-height: 900px;
       justify-content: center;
       align-items: center;
 
-      .loginInputSection {
+      .signUpInputSection {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -83,7 +83,7 @@ $medium-height: 900px;
         }
       }
 
-      .loginInputSection:not(:first-of-type) {
+      .signUpInputSection:not(:first-of-type) {
         justify-content: flex-start;
       }
     }

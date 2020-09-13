@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { timer } from 'rxjs'; // TEMP
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +14,12 @@ export class LoginComponent implements OnInit {
   loading = false;
   success = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      email: ['chris@email.com', [Validators.required, Validators.email]],
+      password: ['testPassword', [Validators.required]]
     });
   }
 
@@ -37,13 +37,7 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     try {
-      console.log('sending...');
-      timer(2000).subscribe(() => {
-        console.log(email, password);
-        this.success = true;
-        this.loading = false;
-        console.log('successful');
-      });
+      this.auth.getToken(email, password);
     } catch (err) {
       console.error(err); // Error component render or something
     }

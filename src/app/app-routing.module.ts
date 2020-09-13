@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent } from './auth/welcome/welcome.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
+import { WelcomeComponent } from './components/auth/welcome/welcome.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Home if authenticated, welcome if not. See how to handle this with the guard service
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Home if authenticated, welcome if not, adminHome if admin. See how to handle this with the guard service. // public
   { path: 'welcome', component: WelcomeComponent }, // public
   { path: 'login', component: LoginComponent }, // public
   { path: 'signup', component: SignupComponent }, // public

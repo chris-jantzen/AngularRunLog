@@ -13,11 +13,22 @@ const { typeDefs, resolvers } = require('./gql/Schema');
 dotenv.config();
 
 const app = express();
-app.use(cors({
-  origin: 'localhost:3000',
-  'Access-Control-Allow-Origin': 'localhost:3000',
-  credentials: true
-}));
+// app.use(cors({
+//   origin: 'localhost:4200',
+//   'Access-Control-Allow-Origin': 'localhost:4200',
+//   credentials: true
+// }));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Content-Type, Accept, Accept-Language, Origin, User-Agent');
+  if(req.method === 'OPTIONS') {
+    res.sendStatus(204);
+  }
+  else {
+    next();
+  }
+})
 app.use(morgan('dev'));
 app.use(express.json());
 
