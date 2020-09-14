@@ -1,25 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Subscription } from 'rxjs';
+import { Token } from '../../../models/token';
+import { Store } from '@ngxs/store';
+import { AddToken } from '../../../actions/auth.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
 
   loading = false;
   success = false;
+  subscription: Subscription;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['chris@email.com', [Validators.required, Validators.email]],
-      password: ['testPassword', [Validators.required]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -35,12 +41,23 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     const { email, password } = this.loginForm.value;
+    this.subscription = this.auth.getToken(email, password)
+      .subscribe(
+        (token: Token) => {
+          this.store.dispatch(new AddToken(token));
+          this.success = true;
+          console.log('success');
+          // this.router.navigate(['/']); // Uncomment when router guard is setup to define what / means based on auth / isAdmin
+        },
+        (err) => {
+          this.loading = false;
+          // Some kind of error message in the form.
+          console.error(err.error.message);
+        });
+  }
 
-    try {
-      this.auth.fetchToken(email, password);
-    } catch (err) {
-      console.error(err); // Error component render or something
-    }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
