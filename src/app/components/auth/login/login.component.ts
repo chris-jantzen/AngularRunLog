@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     try {
-      this.auth.getToken(email, password);
+      this.auth.fetchToken(email, password);
     } catch (err) {
       console.error(err); // Error component render or something
     }

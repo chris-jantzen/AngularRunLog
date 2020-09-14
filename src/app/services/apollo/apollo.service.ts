@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ApolloQueryResult } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
+import { Observable } from 'rxjs';
 import gql from 'graphql-tag';
 
 @Injectable({
@@ -10,7 +10,8 @@ export class ApolloService {
 
   constructor(private apollo: Apollo) { }
 
-  public getUser(id: string) {
+  // <User> / <Partial<User>> ?? Depending on what the return object looks like
+  public getUser(id: string): Observable<any> {
     return this.apollo.query<any>({
       query: gql`
         query UserById($id: ID!) {
@@ -23,6 +24,6 @@ export class ApolloService {
       variables: {
         id
       }
-    })
+    });
   }
 }
