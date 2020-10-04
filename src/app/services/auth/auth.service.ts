@@ -18,7 +18,7 @@ export class AuthService {
 
   public getToken(email: string, password: string): Observable<Token> {
     return this.http.post<Token>(
-      'http://localhost:4201/get-token', // TODO: Set up a proxy in the dev environment for this url
+      '/api/get-token',
       { email, password },
       this.httpOptions
     );

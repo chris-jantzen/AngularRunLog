@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const { ApolloServer, AuthenticationError } = require('apollo-server-express');
 const dotenv = require('dotenv');
@@ -13,22 +12,23 @@ const { typeDefs, resolvers } = require('./gql/Schema');
 dotenv.config();
 
 const app = express();
-// app.use(cors({
-//   origin: 'localhost:4200',
-//   'Access-Control-Allow-Origin': 'localhost:4200',
-//   credentials: true
-// }));
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.header('Access-Control-Allow-Origin', 'localhost:4200');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Content-Type, Accept, Accept-Language, Origin, User-Agent');
-  if(req.method === 'OPTIONS') {
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Origin, Content-Type, Accept, Accept-Language, Origin, User-Agent'
+  );
+  if (req.method === 'OPTIONS') {
     res.sendStatus(204);
-  }
-  else {
+  } else {
     next();
   }
-})
+});
 app.use(morgan('dev'));
 app.use(express.json());
 
@@ -47,7 +47,8 @@ const context = ({ req }) => {
   try {
     jwt.verify(splitToken, process.env.SECRETKEY);
   } catch (error) {
-    if (req.body.query.indexOf('addUser') === -1) { // addUser mutation Should not require an existing account
+    // addUser mutation should not require an existing account
+    if (req.body.query.indexOf('addUser') === -1) {
       throw new AuthenticationError('Auth Token is invalid, please log in');
     }
   }

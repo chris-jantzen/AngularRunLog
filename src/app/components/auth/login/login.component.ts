@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
     });
   }
 
@@ -57,7 +57,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if  (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

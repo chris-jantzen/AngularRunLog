@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+
 import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
 import { AppComponent } from './app.component';
@@ -33,7 +35,9 @@ import { AuthState } from './state/auth.state';
     NgxsModule.forRoot(
       [AuthState],
       { developmentMode: !environment.production }
-    )
+    ),
+    NgxsReduxDevtoolsPluginModule,
+    NgxsLoggerPluginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
